@@ -10,7 +10,6 @@ VAR
     sTopicPub   : STRING(255) := 'LongAn/DucHoa/DuyTan/Device';
     sPayloadPub : STRING(255):='';
 	buffer		: STRING(255):='';
-	name: STRING(255):= 'Hoang Minh Tri';
     i : INT:=1;
 	nState : INT:=0;
     fbTimer : TON := (PT:=T#15S);
@@ -23,7 +22,7 @@ END_VAR
 	0: //Connection establishment
 		IF bSetParameter THEN
 			bSetParameter               := FALSE;
-			fbMqttClient.sHostName      := '192.168.1.251';
+			fbMqttClient.sHostName      := '192.168.1.253';
 			fbMqttClient.nHostPort      := 1883;
 		//  fbMqttClient.sClientId      := 'MyTcMqttClient'; 
 			fbMqttClient.sTopicPrefix   := ''; 

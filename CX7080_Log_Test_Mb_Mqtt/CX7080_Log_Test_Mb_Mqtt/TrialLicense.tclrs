@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <TcLicenseInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2011/11/TcLicenseInfo">
 	<LicenseInfo>
-		<SystemId>{9E8BA005-E808-11AF-7701-20948E5EF8F9}</SystemId>
-		<IssueTime>2024-01-05T06:19:00</IssueTime>
+		<SystemId>{D2A0AC33-AB98-0B4A-F742-F97F3B1021B8}</SystemId>
+		<IssueTime>2024-01-05T09:15:00</IssueTime>
 		<ExpireTime>2024-01-13T00:00:00</ExpireTime>
-		<LicenseKey>6a3839ad80dbd77c192862172e66d3f4ebd131ff53b72d24b19748f1fbc9406c0c4dd0af44c40d4dc3b44430d13f7aefc17da35a480ff106c31741aa221fc71c096b092a7605952bec472c3e16dee5a5dad8c441eb2a57598d21832109a00ff2740f5c72f5ea421a0fc65b1c7c6e01bb9faaa60169c9811de263dc73e7676aa96dce7bc2b3a04e201fec7de3434789e90ef867d071f541ead0a5117636f85868cade4beb22cc10210967be8bc0bc1960b08cb380845d58c900c71421bdd84c5f067746645c4b2cdbb1283bc320977a1411576795a0b6eb2e8cd96093915b49d5ab8dacb6148825d24682595d2730558908f2add427cce39e22f9c35fad55c16f</LicenseKey>
+		<LicenseKey>cd56268022247de1286fef307c24d5f893b5bc5ec1abc5395869b5a2a37b8f3131e237e3e2c223a16e86a4b6af0064d0e1a81d5922fffab458ca1651d7658a2d65582d80a84c935e759bb7c4b280c4de7c7bbe12b6707e6ea220b59ca667cf96448aea078da0042be32cf2917a73f178cdc16bafe39566241712128fd85f50017ab0202088337d7aabd0361d13fc6c41ffb93a5fb0bfd2457cf5f15e58b39d1e34a4b92591fb8a55db97420960f46b83cf37b9daece531c0fa4920549c6c5c9688fb96fdecc3247fa58082579c16c221e65a1a484ccf1a1bc49d05c58d951e2c0266fcd2cd277f56b78853a2dbfc399ee321aab05a2e00c95febcc2ad37b98c6</LicenseKey>
 		<License>
 			<LicenseId>{973BA0B1-AADD-41C1-B518-302802473922}</LicenseId>
 			<Name>TC3 IoT MQTT Protocol</Name>
@@ -13,6 +13,26 @@
 			<LicenseId>{0ABFD2B0-EAE1-4DC7-AABE-03093B0786B7}</LicenseId>
 			<Name>TC3 IoT Communication (MQTT)</Name>
 			<OrderNo>TF6701</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{4C256767-E6E6-4AF5-BD68-9F7ABAD0C200}</LicenseId>
+			<Name>TC3 ADS</Name>
+			<OrderNo>TC1000</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{66689887-CCBD-452C-AC9A-039D997C6E66}</LicenseId>
+			<Name>TC3 PLC</Name>
+			<OrderNo>TC1200</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{A1AF8A04-C08D-4853-A5A0-0E6C3A278A8C}</LicenseId>
+			<Name>TC3 Modbus-RTU</Name>
+			<OrderNo>TF6255</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{3FF18E97-7754-401B-93FB-70544DE28A13}</LicenseId>
+			<Name>TC3 IO</Name>
+			<OrderNo>TC1100</OrderNo>
 		</License>
 	</LicenseInfo>
 </TcLicenseInfo>
