@@ -3,13 +3,78 @@
   <POU Name="MQTT" Id="{22a2f25d-52ae-4956-8afe-fe8eb2daff36}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MQTT
 VAR
+	fbMqttClient: FB_IotMqttClient;
+	bSetParameter: BOOL:=TRUE;
+	bConnect: BOOL:= TRUE;
+	(* published message *)
+    sTopicPub   : STRING(255) := 'LongAn/DucHoa/DuyTan/IOT1';
+    sPayloadPub : STRING(255):='';
+	name: STRING(255):= 'Hoang Minh Tri';
+    i : UDINT;
+    fbTimer : TON := (PT:=T#31S);
+	 (* received message *)
+    bSubscribed    : BOOL;
+    sTopicSub      : STRING(255) := 'BAVN/Tech/Solutions/Engineer1';
+    {attribute 'TcEncoding':='UTF-8'}
+    sTopicRcv      : STRING(255);
+    {attribute 'TcEncoding':='UTF-8'}
+    sPayloadRcv    : STRING(255);
+    fbMessageQueue : FB_IotMqttMessageQueue;
+    fbMessage      : FB_IotMqttMessage;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[
+
+//--------------Connection Establishment--------------
+IF bSetParameter THEN
+    bSetParameter               := FALSE;
+    fbMqttClient.sHostName      := '192.168.1.253';
+    fbMqttClient.nHostPort      := 1883;
+//  fbMqttClient.sClientId      := 'MyTcMqttClient'; 
+    fbMqttClient.sTopicPrefix   := ''; 
+//  fbMqttClient.nKeepAlive     := 60; 
+//  fbMqttClient.sUserName      := ;
+//  fbMqttClient.sUserPassword  := ; 
+//  fbMqttClient.stWill         := ; 
+//  fbMqttClient.stTLS          := ;
+    fbMqttClient.ipMessageQueue := fbMessageQueue;
+END_IF
+
+// -----------CONCAT String for payload---------------
+fbMqttClient.Execute(bConnect);
+FOR i:= 1 TO 20 BY 1 DO
+	sPayloadPub:= CONCAT(sPayloadPub,',');
+	sPayloadPub:= CONCAT(sPayloadPub,GVL.aMeterData[i]);
+END_FOR
+
+//-------------------Publish data to broker----------------
+IF fbMqttClient.bConnected THEN
+    fbTimer(IN:=TRUE);
+    IF fbTimer.Q THEN // publish new payload every 31 seconds
+        fbTimer(IN:=FALSE);
+        fbMqttClient.Publish(   sTopic:= sTopicPub, 
+                                pPayload:= ADR(sPayloadPub), nPayloadSize:= LEN2(ADR(sPayloadPub))+1, 
+                                eQoS:= TcIotMqttQos.AtMostOnceDelivery, bRetain:= FALSE, bQueue:= FALSE );
+    END_IF
+END_IF]]></ST>
     </Implementation>
     <LineIds Name="MQTT">
+      <LineId Id="75" Count="1" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="29" Count="11" />
       <LineId Id="5" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="42" Count="1" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="47" Count="1" />
+      <LineId Id="72" Count="0" />
+      <LineId Id="55" Count="1" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="61" Count="1" />
+      <LineId Id="64" Count="3" />
+      <LineId Id="54" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
