@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="ModbusRTU" Id="{fb1103b6-429f-46ca-a932-ab687a9dc31f}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM ModbusRTU
+VAR
+	fbEpcMb: ModbusRtuMaster_KL6x22B;
+	wQty: WORD;
+	wMbAddr: WORD;
+	wData: ARRAY[1..10] OF WORD;
+	bRead: BOOL;
+	fbRTrigRead: R_TRIG;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbRTrigRead(CLK:=bRead, Q=>);
+
+IF fbRTrigRead.Q THEN
+	wQty := 10;
+	wMbAddr := 20;
+END_IF
+
+fbEpcMb.ReadRegs(
+	UnitID:= 10, 
+	Quantity:= wQty, 
+	MBAddr:= wMbAddr, 
+	cbLength:= SIZEOF(wData), 
+	pMemoryAddr:= ADR(wData), 
+	Execute:= fbRTrigRead.Q, 
+	Timeout:= T#2S, 
+	BUSY=> , 
+	Error=> , 
+	ErrorId=> , 
+	cbRead=> );]]></ST>
+    </Implementation>
+    <LineIds Name="ModbusRTU">
+      <LineId Id="24" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="7" Count="10" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_PowerMeter" Id="{05040c80-05e8-42ab-8d05-db7ec29c7e20}">
+    <Declaration><![CDATA[TYPE ST_PowerMeter :
+STRUCT
+	fProp1: WORD;
+	fProp2: WORD;
+	fProp3: WORD;
+	fProp4: WORD;
+	fProp5: WORD;
+	fProp6: WORD;
+	fProp7: WORD;
+	fProp8: WORD;
+	fProp9: WORD;
+	fProp10: WORD;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
