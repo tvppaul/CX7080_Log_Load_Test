@@ -7,74 +7,102 @@ VAR
 	bSetParameter: BOOL:=TRUE;
 	bConnect: BOOL:= TRUE;
 	(* published message *)
-    sTopicPub   : STRING(255) := 'LongAn/DucHoa/DuyTan/IOT1';
+    sTopicPub   : STRING(255) := 'LongAn/DucHoa/DuyTan/Device';
     sPayloadPub : STRING(255):='';
+	buffer		: STRING(255):='';
 	name: STRING(255):= 'Hoang Minh Tri';
-    i : UDINT;
-    fbTimer : TON := (PT:=T#31S);
-	 (* received message *)
-    bSubscribed    : BOOL;
-    sTopicSub      : STRING(255) := 'BAVN/Tech/Solutions/Engineer1';
-    {attribute 'TcEncoding':='UTF-8'}
-    sTopicRcv      : STRING(255);
-    {attribute 'TcEncoding':='UTF-8'}
-    sPayloadRcv    : STRING(255);
+    i : INT:=1;
+	nState : INT:=0;
+    fbTimer : TON := (PT:=T#15S);
     fbMessageQueue : FB_IotMqttMessageQueue;
-    fbMessage      : FB_IotMqttMessage;
+	fbFormat: FB_FormatString;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
+      <ST><![CDATA[CASE nState OF
+	0: //Connection establishment
+		IF bSetParameter THEN
+			bSetParameter               := FALSE;
+			fbMqttClient.sHostName      := '192.168.1.251';
+			fbMqttClient.nHostPort      := 1883;
+		//  fbMqttClient.sClientId      := 'MyTcMqttClient'; 
+			fbMqttClient.sTopicPrefix   := ''; 
+		//  fbMqttClient.nKeepAlive     := 60; 
+		//  fbMqttClient.sUserName      := ;
+		//  fbMqttClient.sUserPassword  := ; 
+		//  fbMqttClient.stWill         := ; 
+		//  fbMqttClient.stTLS          := ;
+			fbMqttClient.ipMessageQueue := fbMessageQueue;
+		END_IF
+		nState:= 10;
+	10: // -----------CONCAT STRING FOR payload---------------
+		fbMqttClient.Execute(bConnect);
+		fbFormat(
+		sFormat:= '%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,',
+			arg1:= F_WORD(GVL.aMeterData[i].fProp1),
+			arg2:= F_WORD(GVL.aMeterData[i].fProp2),
+			arg3:= F_WORD(GVL.aMeterData[i].fProp3),
+			arg4:= F_WORD(GVL.aMeterData[i].fProp4),
+			arg5:= F_WORD(GVL.aMeterData[i].fProp5),
+			arg6:= F_WORD(GVL.aMeterData[i].fProp6),
+			arg7:= F_WORD(GVL.aMeterData[i].fProp7),
+			arg8:= F_WORD(GVL.aMeterData[i].fProp8),
+			arg9:= F_WORD(GVL.aMeterData[i].fProp9),
+			arg10:= F_WORD(GVL.aMeterData[i].fProp10),
+			bError => ,
+			nErrId => ,
+			sOut => sPayloadPub
+		);
+		sTopicPub:= CONCAT(sTopicPub,INT_TO_STRING(i));
+		nState:= 20;
+	20://-------------------Publish data to broker----------------
+		IF fbMqttClient.bConnected THEN
+			fbMqttClient.Publish(   sTopic:= sTopicPub, 
+									pPayload:= ADR(sPayloadPub), nPayloadSize:= LEN2(ADR(sPayloadPub))+1, 
+									eQoS:= TcIotMqttQos.AtMostOnceDelivery, bRetain:= FALSE, bQueue:= FALSE );
+			sPayloadPub:='';
+			nState:=30;
+		END_IF
+	30://-------------------Waiting for publishing----------------
+		IF NOT fbMqttClient.bError THEN
+			fbTimer(IN:=TRUE);
+			IF fbTimer.Q THEN // publish new payload every 5 seconds
+        		fbTimer(IN:=FALSE);
+				IF i = 20 THEN
+					i:=1;
+				ELSE
+					i:=i+1;
+				END_IF
+				nState:=10;
+			END_IF
 
-//--------------Connection Establishment--------------
-IF bSetParameter THEN
-    bSetParameter               := FALSE;
-    fbMqttClient.sHostName      := '192.168.1.253';
-    fbMqttClient.nHostPort      := 1883;
-//  fbMqttClient.sClientId      := 'MyTcMqttClient'; 
-    fbMqttClient.sTopicPrefix   := ''; 
-//  fbMqttClient.nKeepAlive     := 60; 
-//  fbMqttClient.sUserName      := ;
-//  fbMqttClient.sUserPassword  := ; 
-//  fbMqttClient.stWill         := ; 
-//  fbMqttClient.stTLS          := ;
-    fbMqttClient.ipMessageQueue := fbMessageQueue;
-END_IF
-
-// -----------CONCAT String for payload---------------
-fbMqttClient.Execute(bConnect);
-FOR i:= 1 TO 20 BY 1 DO
-	sPayloadPub:= CONCAT(sPayloadPub,',');
-	sPayloadPub:= CONCAT(sPayloadPub,GVL.aMeterData[i]);
-END_FOR
-
-//-------------------Publish data to broker----------------
-IF fbMqttClient.bConnected THEN
-    fbTimer(IN:=TRUE);
-    IF fbTimer.Q THEN // publish new payload every 31 seconds
-        fbTimer(IN:=FALSE);
-        fbMqttClient.Publish(   sTopic:= sTopicPub, 
-                                pPayload:= ADR(sPayloadPub), nPayloadSize:= LEN2(ADR(sPayloadPub))+1, 
-                                eQoS:= TcIotMqttQos.AtMostOnceDelivery, bRetain:= FALSE, bQueue:= FALSE );
-    END_IF
-END_IF]]></ST>
+		END_IF
+END_CASE]]></ST>
     </Implementation>
     <LineIds Name="MQTT">
-      <LineId Id="75" Count="1" />
-      <LineId Id="74" Count="0" />
-      <LineId Id="29" Count="11" />
-      <LineId Id="5" Count="0" />
-      <LineId Id="73" Count="0" />
-      <LineId Id="42" Count="1" />
-      <LineId Id="41" Count="0" />
-      <LineId Id="53" Count="0" />
-      <LineId Id="47" Count="1" />
-      <LineId Id="72" Count="0" />
-      <LineId Id="55" Count="1" />
-      <LineId Id="71" Count="0" />
-      <LineId Id="61" Count="1" />
-      <LineId Id="64" Count="3" />
-      <LineId Id="54" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="182" Count="0" />
+      <LineId Id="197" Count="0" />
+      <LineId Id="186" Count="10" />
+      <LineId Id="184" Count="0" />
+      <LineId Id="198" Count="0" />
+      <LineId Id="201" Count="1" />
+      <LineId Id="204" Count="14" />
+      <LineId Id="199" Count="0" />
+      <LineId Id="276" Count="0" />
+      <LineId Id="220" Count="0" />
+      <LineId Id="222" Count="6" />
+      <LineId Id="221" Count="0" />
+      <LineId Id="200" Count="0" />
+      <LineId Id="229" Count="0" />
+      <LineId Id="275" Count="0" />
+      <LineId Id="277" Count="1" />
+      <LineId Id="281" Count="4" />
+      <LineId Id="280" Count="0" />
+      <LineId Id="279" Count="0" />
+      <LineId Id="234" Count="0" />
+      <LineId Id="231" Count="0" />
+      <LineId Id="183" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
