@@ -4,27 +4,43 @@
     <Declaration><![CDATA[PROGRAM ModbusRTU
 VAR
 	fbEpcMb: ModbusRtuMaster_KL6x22B;
-	wQty: WORD;
-	wMbAddr: WORD;
-	wData: ARRAY[1..10] OF WORD;
+	nMbId: BYTE := 1;
+	wQty: WORD := 10;
+	wMbAddr: WORD := 20;
+	stData: ST_PowerMeter;
 	bRead: BOOL;
 	fbRTrigRead: R_TRIG;
+	nReadState: UINT;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbRTrigRead(CLK:=bRead, Q=>);
 
-IF fbRTrigRead.Q THEN
-	wQty := 10;
-	wMbAddr := 20;
-END_IF
+CASE nReadState OF
+	0:
+		bRead := TRUE;
+		IF fbRTrigRead.Q THEN
+			nReadState := 1;
+		END_IF
+	1:
+		bRead := FALSE;
+		IF NOT fbEpcMb.BUSY AND NOT fbEpcMb.Error THEN
+			GVL.aMeterData[nMbId] := stData;
+			IF nMbId < 20 THEN
+				nMbId := nMbId + 1;
+			ELSE
+				nMbId := 1;
+			END_IF	
+			nReadState := 0;
+		END_IF
+END_CASE
 
 fbEpcMb.ReadRegs(
-	UnitID:= 10, 
+	UnitID:= nMbId, 
 	Quantity:= wQty, 
 	MBAddr:= wMbAddr, 
-	cbLength:= SIZEOF(wData), 
-	pMemoryAddr:= ADR(wData), 
+	cbLength:= SIZEOF(stData), 
+	pMemoryAddr:= ADR(stData), 
 	Execute:= fbRTrigRead.Q, 
 	Timeout:= T#2S, 
 	BUSY=> , 
@@ -34,12 +50,23 @@ fbEpcMb.ReadRegs(
     </Implementation>
     <LineIds Name="ModbusRTU">
       <LineId Id="24" Count="0" />
-      <LineId Id="26" Count="0" />
-      <LineId Id="25" Count="0" />
-      <LineId Id="27" Count="0" />
-      <LineId Id="29" Count="0" />
-      <LineId Id="28" Count="0" />
+      <LineId Id="41" Count="0" />
       <LineId Id="23" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="91" Count="0" />
+      <LineId Id="94" Count="1" />
+      <LineId Id="97" Count="1" />
+      <LineId Id="96" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="44" Count="1" />
       <LineId Id="7" Count="10" />
       <LineId Id="5" Count="0" />
     </LineIds>
