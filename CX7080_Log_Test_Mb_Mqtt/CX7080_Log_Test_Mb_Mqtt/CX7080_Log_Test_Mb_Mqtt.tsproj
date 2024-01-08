@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.50">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.53">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{F852D9F7-9DB9-AE77-EE6D-D9BA52CDE308}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6inData22B</Name>
@@ -69,11 +69,30 @@
 				<Elements>4</Elements>
 			</ArrayInfo>
 		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00200000000C}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..11] OF BIT</Name>
+			<BitSize>12</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>12</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000007}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..6] OF BIT</Name>
+			<BitSize>7</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>7</Elements>
+			</ArrayInfo>
+		</DataType>
 	</DataTypes>
 	<ImageDatas>
 		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ff808080808080808080808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
 		<ImageData Id="1001">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ff000000000000ff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ff000000ff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ffff00ffff00ffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ff000000ff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ff000000000000ff00ffff00ffff00ffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
 		<ImageData Id="1002">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff</ImageData>
+		<ImageData Id="1003">424dd6020000000000003600000028000000100000000e0000000100180000000000a002000000000000000000000000000000000000ff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000bfff00bfffc0c0c0808080c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
 	</ImageDatas>
 	<Project ProjectGUID="{355E6330-6258-4D86-8D8F-A5FEC79D2865}" TargetNetId="5.95.143.164.1.1" ShowHideConfigurations="#x6">
 		<System>
@@ -85,7 +104,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{2A4853AF-9BD9-4031-BBE3-BFA61217EC29}" Name="Log_Test_Controller" PrjFilePath="Log_Test_Controller\Log_Test_Controller.plcproj" TmcFilePath="Log_Test_Controller\Log_Test_Controller.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Log_Test_Controller\Log_Test_Controller.tmc" TmcHash="{3C1DA335-E35F-7426-156A-C05D00E38509}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Log_Test_Controller\Log_Test_Controller.tmc" TmcHash="{9A359212-0A27-DA29-A013-02FC8FFBE526}">
 					<Name>Log_Test_Controller Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -127,7 +146,7 @@
 			</Project>
 		</Plc>
 		<Io>
-			<Device Id="1" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="10.200.124.203.2.1" RemoteName="Device 1 (EtherCAT)" InfoImageId="2">
+			<Device Id="1" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="5.95.143.164.2.1" RemoteName="Device 1 (EtherCAT)" InfoImageId="2">
 				<Name>Device 1 (EtherCAT)</Name>
 				<AddressInfo>
 					<Ccat>
@@ -949,12 +968,208 @@
 				</Box>
 				<EtherCAT/>
 			</Device>
-			<Device Id="3" Disabled="true" DevType="161" AmsNetId="10.200.124.203.4.1" RemoteName="Device 3 (CX7000)_Devices">
+			<Device Id="3" DevType="161" AmsNetId="5.95.143.164.4.1" RemoteName="Device 3 (CX7000)_Devices">
 				<Name>Device 3 (CX7000)</Name>
 				<DevData>3412000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</DevData>
-				<Image Id="5" AddrType="1" ImageType="3" SizeIn="2" SizeOut="10">
+				<Image Id="5" AddrType="1" ImageType="3" SizeIn="6" SizeOut="20">
 					<Name>Image</Name>
 				</Image>
+				<Box Id="4" BoxType="9592" BoxFlags="#x00000020" AmsPort="1000">
+					<Name>Term 4 (CX7028)</Name>
+					<ImageId>1003</ImageId>
+					<EtherCAT SlaveType="2" PdiType="#x0005" SuFlags="5" SyncUnitBits="false" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="39" FoeType="1" VendorId="#x00000002" ProductCode="#x1b746032" RevisionNo="#x00760000" InfoDataState="false" TimeoutMailbox2="5000" DownloadSlotCfg="true" CheckRevisionNoType="3" PortPhys="49" DownloadSlotCfgIP="true" MaxSlotCount="8" SlotPdoIncrement="16" SlotIndexIncrement="16" Type="CX7028-0000-0118" Desc="CX7028">
+						<SyncMan>001040002600010001000000400080004000001026010000</SyncMan>
+						<SyncMan>801040002200010002000000400080004000801022010000</SyncMan>
+						<SyncMan>001104002400010003000000000000000400001124010000</SyncMan>
+						<SyncMan>00120a002000010004000000000000000a00001220010000</SyncMan>
+						<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001200010100000002000000000000000000000000000000</Fmmu>
+						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+						<BootStrapData>0010f400f410f400</BootStrapData>
+						<Pdo Name="DEV Inputs Device" Index="#x1a80" Flags="#x0011" SyncMan="3">
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-00200000000C}">ARRAY [0..11] OF BIT</Type>
+							</Entry>
+							<Entry Name="Diag" Index="#xf600" Sub="#x0d">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO State" Index="#xf600" Sub="#x0e">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Input cycle counter" Index="#xf600" Sub="#x0f">
+								<Type>BIT2</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DIO_2x Inputs Channel 1" Index="#x1a00" Flags="#x0291" SyncMan="3">
+							<Entry Name="Input" Index="#x6000" Flags="#x00001000">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DIO_2x Inputs Channel 2" Index="#x1a10" Flags="#x0291" SyncMan="3">
+							<Entry Name="Input" Index="#x6010" Flags="#x00001000">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DIO_2x Outputs Channel 1" Index="#x1600" InOut="1" Flags="#x0291" SyncMan="2">
+							<Entry Name="Output" Index="#x7000" Flags="#x00001000">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DIO_2x Outputs Channel 2" Index="#x1610" InOut="1" Flags="#x0291" SyncMan="2">
+							<Entry Name="Output" Index="#x7010" Flags="#x00001000">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DIO_2x Input Channel 1" Index="#x1a20" Flags="#x0291" SyncMan="3">
+							<Entry Name="Input" Index="#x6020" Flags="#x00001000">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DIO_2x Input Channel 2" Index="#x1a30" Flags="#x0291" SyncMan="3">
+							<Entry Name="Input" Index="#x6030" Flags="#x00001000">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DIO_2x Outputs Channel 1" Index="#x1620" InOut="1" Flags="#x0291" SyncMan="2">
+							<Entry Name="Output" Index="#x7020" Flags="#x00001000">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DIO_2x Outputs Channel 2" Index="#x1630" InOut="1" Flags="#x0291" SyncMan="2">
+							<Entry Name="Output" Index="#x7030" Flags="#x00001000">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DI_2x Input Channel 1" Index="#x1a40" Flags="#x0291" SyncMan="3">
+							<Entry Name="Input" Index="#x6040" Flags="#x00001000">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DI_2x Input Channel 2" Index="#x1a50" Flags="#x0291" SyncMan="3">
+							<Entry Name="Input" Index="#x6050" Flags="#x00001000">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DI_2x Inputs Channel 1" Index="#x1a60" Flags="#x0291" SyncMan="3">
+							<Entry Name="Input" Index="#x6060" Flags="#x00001000">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DI_2x Inputs Channel 2" Index="#x1a70" Flags="#x0291" SyncMan="3">
+							<Entry Name="Input" Index="#x6070" Flags="#x00001000">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Slot Name="InOut[1..2]">
+							<SlotData>0000010001000400100000001000000000000000000000000000000000000000</SlotData>
+							<ModuleIdent>6298484</ModuleIdent>
+							<ModuleIdent>7347060</ModuleIdent>
+							<ModuleIdent>3152756</ModuleIdent>
+							<Module Id="#x03090001" Type="DIO_2x" Class="">
+								<Name>Module 1 (DIO_2x)</Name>
+								<ImageId>409</ImageId>
+								<ModuleData>02000000741b3000000004000000000000000000000000000000000000000000</ModuleData>
+								<PdoIndex>6656</PdoIndex>
+								<PdoIndex>6672</PdoIndex>
+								<PdoIndex>5632</PdoIndex>
+								<PdoIndex>5648</PdoIndex>
+								<CoeProfile ProfileNo="#x00001389"/>
+							</Module>
+						</Slot>
+						<Slot Name="Empty Slot">
+							<SlotData>0000000001000400100000001000000000000000000000000000000000000000</SlotData>
+							<ModuleIdent>0</ModuleIdent>
+						</Slot>
+						<Slot Name="InOut[3..4]">
+							<SlotData>0000010001000400100000001000000000000000000000000000000000000000</SlotData>
+							<ModuleIdent>7028</ModuleIdent>
+							<ModuleIdent>5249908</ModuleIdent>
+							<Module Id="#x03090002" Type="DIO_2x" Class="">
+								<Name>Module 3 (DIO_2x)</Name>
+								<ImageId>409</ImageId>
+								<ModuleData>02000000741b0000000004000000000000000000000000000000000000000000</ModuleData>
+								<PdoIndex>6688</PdoIndex>
+								<PdoIndex>6704</PdoIndex>
+								<PdoIndex>5664</PdoIndex>
+								<PdoIndex>5680</PdoIndex>
+								<CoeProfile ProfileNo="#x00001389"/>
+							</Module>
+						</Slot>
+						<Slot Name="Empty Slot">
+							<SlotData>0000000001000400100000001000000000000000000000000000000000000000</SlotData>
+							<ModuleIdent>0</ModuleIdent>
+						</Slot>
+						<Slot Name="In[5..6]">
+							<SlotData>0000010001000400100000001000000000000000000000000000000000000000</SlotData>
+							<ModuleIdent>1055604</ModuleIdent>
+							<Module Id="#x03090003" Type="DI_2x" Class="">
+								<Name>Module 5 (DI_2x)</Name>
+								<ImageId>409</ImageId>
+								<ModuleData>02000000741b1000000004000000000000000000000000000000000000000000</ModuleData>
+								<PdoIndex>6720</PdoIndex>
+								<PdoIndex>6736</PdoIndex>
+								<CoeProfile ProfileNo="#x00001389"/>
+							</Module>
+						</Slot>
+						<Slot Name="Empty Slot">
+							<SlotData>0000000001000400100000001000000000000000000000000000000000000000</SlotData>
+							<ModuleIdent>0</ModuleIdent>
+						</Slot>
+						<Slot Name="In[7..8]">
+							<SlotData>0000010001000400100000001000000000000000000000000000000000000000</SlotData>
+							<ModuleIdent>4201332</ModuleIdent>
+							<ModuleIdent>2104180</ModuleIdent>
+							<Module Id="#x03090004" Type="DI_2x" Class="">
+								<Name>Module 7 (DI_2x)</Name>
+								<ImageId>409</ImageId>
+								<ModuleData>02000000741b2000000004000000000000000000000000000000000000000000</ModuleData>
+								<PdoIndex>6752</PdoIndex>
+								<PdoIndex>6768</PdoIndex>
+								<CoeProfile ProfileNo="#x00001389"/>
+							</Module>
+						</Slot>
+						<Slot Name="Empty Slot">
+							<SlotData>0000000001000400100000001000000000000000000000000000000000000000</SlotData>
+							<ModuleIdent>0</ModuleIdent>
+						</Slot>
+					</EtherCAT>
+				</Box>
 			</Device>
 			<Device Id="5" Disabled="true" DevType="11" AmsPort="28677">
 				<Name>Device 5 (COM Port)</Name>
